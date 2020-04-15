@@ -1,0 +1,10 @@
+error[E0277]: the trait bound `Other: mem_markers::FixedLayout` is not satisfied
+  --> $DIR/field-not-fixed-layout.rs:6:8
+   |
+6  |     a: Other,
+   |        ^^^^^ the trait `mem_markers::FixedLayout` is not implemented for `Other`
+   | 
+  ::: $WORKSPACE/src/lib.rs:10:31
+   |
+10 | pub fn ensure_fixed_layout<T: FixedLayout>() {}
+   |                               ----------- required by this bound in `mem_markers::ensure_fixed_layout`

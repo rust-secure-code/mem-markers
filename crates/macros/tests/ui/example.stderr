@@ -1,7 +1,0 @@
-error: proc-macro derive panicked
- --> $DIR/example.rs:4:10
-  |
-4 | #[derive(FixedLayout)]
-  |          ^^^^^^^^^^^
-  |
-  = help: message: NO!
