@@ -1,0 +1,5 @@
+error: FixedLayout on unions is not currently supported
+ --> $DIR/union.rs:3:10
+  |
+3 | #[derive(FixedLayout)]
+  |          ^^^^^^^^^^^

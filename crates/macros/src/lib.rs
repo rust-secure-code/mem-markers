@@ -18,7 +18,7 @@ fn expand(input: DeriveInput) -> syn::Result<proc_macro2::TokenStream> {
     let ensure = match &input.data {
         syn::Data::Struct(s) => ensure_struct_has_stable_layout(type_name, s, attrs)?,
         syn::Data::Enum(e) => ensure_enum_has_stable_layout(type_name, e, attrs)?,
-        _ => todo!(),
+        syn::Data::Union(u) => ensure_union_has_stable_layout(type_name, u, attrs)?,
     };
 
     let stream = quote! {
@@ -78,6 +78,17 @@ fn ensure_enum_has_stable_layout(
     return Err(syn::Error::new(
         proc_macro2::Span::call_site(),
         "FixedLayout on enums is not currently supported",
+    ));
+}
+
+fn ensure_union_has_stable_layout(
+    _type_name: &syn::Ident,
+    _u: &syn::DataUnion,
+    _attrs: &Vec<syn::Attribute>,
+) -> syn::Result<proc_macro2::TokenStream> {
+    return Err(syn::Error::new(
+        proc_macro2::Span::call_site(),
+        "FixedLayout on unions is not currently supported",
     ));
 }
 
