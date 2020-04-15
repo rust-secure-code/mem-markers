@@ -17,6 +17,7 @@ fn expand(input: DeriveInput) -> syn::Result<proc_macro2::TokenStream> {
     let attrs = &input.attrs;
     let ensure = match &input.data {
         syn::Data::Struct(s) => ensure_struct_has_stable_layout(type_name, s, attrs)?,
+        syn::Data::Enum(e) => ensure_enum_has_stable_layout(type_name, e, attrs)?,
         _ => todo!(),
     };
 
@@ -67,6 +68,17 @@ fn field_types(s: &syn::DataStruct) -> Vec<&syn::Type> {
         syn::Fields::Unnamed(n) => n.unnamed.iter().map(|f| &f.ty).collect(),
         syn::Fields::Unit => vec![],
     }
+}
+
+fn ensure_enum_has_stable_layout(
+    _type_name: &syn::Ident,
+    _e: &syn::DataEnum,
+    _attrs: &Vec<syn::Attribute>,
+) -> syn::Result<proc_macro2::TokenStream> {
+    return Err(syn::Error::new(
+        proc_macro2::Span::call_site(),
+        "FixedLayout on enums is not currently supported",
+    ));
 }
 
 fn has_stable_repr(attrs: &Vec<syn::Attribute>) -> bool {
