@@ -1,0 +1,20 @@
+[package]
+name = "macros"
+version = "0.1.0"
+authors = ["Ryan Levick <ryan.levick@gmail.com>"]
+edition = "2018"
+
+[lib]
+proc_macro = true
+
+[[test]]
+name = "tests"
+path = "tests/diagnostics.rs"
+
+[dependencies]
+quote = "1.0"
+syn = "1.0"
+
+[dev-dependencies]
+trybuild = "1.0"
+mem-markers = { path = "../.." }
