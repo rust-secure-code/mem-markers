@@ -5,5 +5,5 @@ use macros::FixedLayout;
 struct Foo(u8);
 
 fn main() {
-    mem_markers::ensure_fixed_layout::<Foo>();
+    mem_markers::fixed_layout::ensure::<Foo>();
 }
