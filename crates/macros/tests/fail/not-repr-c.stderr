@@ -1,0 +1,5 @@
+error: FixedLayout trait requires #[repr(C)] or #[repr(transparent)] on structs with fields
+ --> $DIR/not-repr-c.rs:3:10
+  |
+3 | #[derive(FixedLayout)]
+  |          ^^^^^^^^^^^

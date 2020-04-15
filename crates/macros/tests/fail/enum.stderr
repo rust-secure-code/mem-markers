@@ -1,0 +1,5 @@
+error: FixedLayout on enums is not currently supported
+ --> $DIR/enum.rs:3:10
+  |
+3 | #[derive(FixedLayout)]
+  |          ^^^^^^^^^^^
