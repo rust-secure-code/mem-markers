@@ -1,15 +1,7 @@
-warning: unused import: `macros::FixedLayout`
- --> $DIR/non-sized-fixed-layout.rs:1:5
-  |
-1 | use macros::FixedLayout;
-  |     ^^^^^^^^^^^^^^^^^^^
-  |
-  = note: `#[warn(unused_imports)]` on by default
-
 error[E0277]: the size for values of type `str` cannot be known at compilation time
-  --> $DIR/non-sized-fixed-layout.rs:4:5
+  --> $DIR/non-sized-fixed-layout.rs:2:5
    |
-4  |     mem_markers::fixed_layout::ensure::<&str>();
+2  |     mem_markers::fixed_layout::ensure::<&str>();
    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ doesn't have a size known at compile-time
    | 
   ::: $WORKSPACE/src/fixed_layout.rs:10:18
