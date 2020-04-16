@@ -1,0 +1,5 @@
+error: FixedLayout on types with generics is not currently supported
+ --> $DIR/lifetitme.rs:3:10
+  |
+3 | #[derive(FixedLayout)]
+  |          ^^^^^^^^^^^

@@ -2,9 +2,6 @@ name: Build and Test
 
 on: [pull_request]
 
-env:
-  RUSTFLAGS: -Dwarnings
-
 jobs:
   build:
     runs-on: ubuntu-latest
