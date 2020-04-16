@@ -30,36 +30,36 @@ fixed_layout_impl!(
     isize,
     bool,
     char,
-    std::num::NonZeroI8,
-    std::num::NonZeroU8,
-    std::num::NonZeroI16,
-    std::num::NonZeroU16,
-    std::num::NonZeroI32,
-    std::num::NonZeroU32,
-    std::num::NonZeroI64,
-    std::num::NonZeroU64,
-    std::num::NonZeroI128,
-    std::num::NonZeroU128,
-    Option<std::num::NonZeroI8>,
-    Option<std::num::NonZeroU8>,
-    Option<std::num::NonZeroI16>,
-    Option<std::num::NonZeroU16>,
-    Option<std::num::NonZeroI32>,
-    Option<std::num::NonZeroU32>,
-    Option<std::num::NonZeroI64>,
-    Option<std::num::NonZeroU64>,
-    Option<std::num::NonZeroI128>,
-    Option<std::num::NonZeroU128>,
+    core::num::NonZeroI8,
+    core::num::NonZeroU8,
+    core::num::NonZeroI16,
+    core::num::NonZeroU16,
+    core::num::NonZeroI32,
+    core::num::NonZeroU32,
+    core::num::NonZeroI64,
+    core::num::NonZeroU64,
+    core::num::NonZeroI128,
+    core::num::NonZeroU128,
+    Option<core::num::NonZeroI8>,
+    Option<core::num::NonZeroU8>,
+    Option<core::num::NonZeroI16>,
+    Option<core::num::NonZeroU16>,
+    Option<core::num::NonZeroI32>,
+    Option<core::num::NonZeroU32>,
+    Option<core::num::NonZeroI64>,
+    Option<core::num::NonZeroU64>,
+    Option<core::num::NonZeroI128>,
+    Option<core::num::NonZeroU128>,
     f32,
     f64
 );
 
 unsafe impl<T> FixedLayout for *const T {}
 unsafe impl<T> FixedLayout for *mut T {}
-unsafe impl<T: Sized> FixedLayout for &T {}
-unsafe impl<T: Sized> FixedLayout for &mut T {}
-unsafe impl<T> FixedLayout for std::ptr::NonNull<T> {}
-unsafe impl<T> FixedLayout for Option<std::ptr::NonNull<T>> {}
+unsafe impl<T> FixedLayout for &T {}
+unsafe impl<T> FixedLayout for &mut T {}
+unsafe impl<T> FixedLayout for core::ptr::NonNull<T> {}
+unsafe impl<T> FixedLayout for Option<core::ptr::NonNull<T>> {}
 
 unsafe impl<T: FixedLayout> FixedLayout for [T; 0] {}
 unsafe impl<T: FixedLayout> FixedLayout for [T; 1] {}

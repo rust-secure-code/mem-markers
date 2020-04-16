@@ -1,0 +1,22 @@
+warning: unused import: `macros::FixedLayout`
+ --> $DIR/non-sized-fixed-layout.rs:1:5
+  |
+1 | use macros::FixedLayout;
+  |     ^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+  --> $DIR/non-sized-fixed-layout.rs:4:5
+   |
+4  |     mem_markers::fixed_layout::ensure::<&str>();
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ doesn't have a size known at compile-time
+   | 
+  ::: $WORKSPACE/src/fixed_layout.rs:10:18
+   |
+10 | pub fn ensure<T: FixedLayout>() {}
+   |                  ----------- required by this bound in `mem_markers::fixed_layout::ensure`
+   |
+   = help: the trait `std::marker::Sized` is not implemented for `str`
+   = note: to learn more, visit <https://doc.rust-lang.org/book/ch19-04-advanced-types.html#dynamically-sized-types-and-the-sized-trait>
+   = note: required because of the requirements on the impl of `mem_markers::fixed_layout::FixedLayout` for `&str`
