@@ -42,7 +42,7 @@ fn ensure_struct_has_stable_layout(
 
     let ensure = quote! {
         #(
-            ::mem_markers::fixed_layout::ensure::<#field_types>()
+            ::mem_markers::fixed_layout::ensure::<#field_types>();
         )*
     };
     let ensure_method_name = quote::format_ident!("__ensure_fixed_layout_for_{}", type_name);

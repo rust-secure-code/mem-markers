@@ -32,7 +32,7 @@ fn ensure_struct_is_byte_complete(
     }
     let ensure = quote! {
         #(
-            ::mem_markers::byte_complete::ensure::<#field_types>()
+            ::mem_markers::byte_complete::ensure::<#field_types>();
         )*
     };
     let ensure_method_name = quote::format_ident!("__ensure_byte_complete_for_{}", type_name);

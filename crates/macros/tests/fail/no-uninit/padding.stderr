@@ -1,0 +1,5 @@
+error[E0080]: evaluation of constant value failed
+ --> $DIR/padding.rs:3:10
+  |
+3 | #[derive(NoUninit)]
+  |          ^^^^^^^^ attempt to divide by zero
