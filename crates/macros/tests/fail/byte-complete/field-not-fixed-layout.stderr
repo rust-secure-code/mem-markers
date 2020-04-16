@@ -1,0 +1,10 @@
+error[E0277]: the trait bound `Other: mem_markers::byte_complete::ByteComplete` is not satisfied
+ --> $DIR/field-not-fixed-layout.rs:5:8
+  |
+5 |     a: Other,
+  |        ^^^^^ the trait `mem_markers::byte_complete::ByteComplete` is not implemented for `Other`
+  | 
+ ::: $WORKSPACE/src/byte_complete.rs:9:18
+  |
+9 | pub fn ensure<T: ByteComplete>() {}
+  |                  ------------ required by this bound in `mem_markers::byte_complete::ensure`
