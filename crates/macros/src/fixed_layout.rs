@@ -1,4 +1,3 @@
-extern crate proc_macro;
 use quote::quote;
 use syn::DeriveInput;
 
@@ -29,7 +28,7 @@ fn ensure_struct_has_stable_layout(
     s: &syn::DataStruct,
     attrs: &Vec<syn::Attribute>,
 ) -> syn::Result<proc_macro2::TokenStream> {
-    let field_types = field_types(s);
+    let field_types = crate::utils::struct_field_types(s);
     if field_types.is_empty() {
         return Ok(quote! {});
     }
@@ -56,14 +55,6 @@ fn ensure_struct_has_stable_layout(
         }
     };
     Ok(stream)
-}
-
-fn field_types(s: &syn::DataStruct) -> Vec<&syn::Type> {
-    match &s.fields {
-        syn::Fields::Named(n) => n.named.iter().map(|f| &f.ty).collect(),
-        syn::Fields::Unnamed(n) => n.unnamed.iter().map(|f| &f.ty).collect(),
-        syn::Fields::Unit => vec![],
-    }
 }
 
 fn ensure_enum_has_stable_layout(
