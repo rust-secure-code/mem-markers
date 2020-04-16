@@ -1,0 +1,5 @@
+error[E0277]: the trait bound `Foo: mem_markers::fixed_layout::FixedLayout` is not satisfied
+ --> $DIR/not_fixed_layout.rs:3:10
+  |
+3 | #[derive(FromBytes, ByteComplete)]
+  |          ^^^^^^^^^ the trait `mem_markers::fixed_layout::FixedLayout` is not implemented for `Foo`
