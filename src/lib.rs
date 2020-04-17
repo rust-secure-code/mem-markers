@@ -1,4 +1,4 @@
-//! Memory marking traits
+//! Marker traits for establishing certain invariants of how a type is represented in memory
 
 #![deny(missing_docs)]
 

@@ -15,6 +15,7 @@ macro_rules! byte_complete_impl {
 }
 
 byte_complete_impl!(
+    (),
     u8,
     u16,
     u32,

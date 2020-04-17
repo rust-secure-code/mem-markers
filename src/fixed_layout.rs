@@ -1,9 +1,9 @@
 /// A marker trait representing types that have fixed layouts in memory
 ///
-/// Types are `FixedLayout` if they have a well-defined layout in memory.
-/// This is usually reserved for primitive types like numbers and bool
-/// as well as complex type that are not `#[repr(rust)]` (the default)
-/// representation for Rust types
+/// Types are `FixedLayout` if they have a well-defined and statically known
+/// layout in memory. This is usually reserved for primitive types like numbers
+/// and bool as well as complex type that are not `#[repr(rust)]` (the default
+/// representation for Rust types).
 pub unsafe trait FixedLayout {}
 
 #[doc(hidden)]
@@ -16,6 +16,7 @@ macro_rules! fixed_layout_impl {
 }
 
 fixed_layout_impl!(
+    (),
     u8,
     u16,
     u32,
