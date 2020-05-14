@@ -2,16 +2,12 @@
 
 #![deny(missing_docs)]
 
-#[doc(hidden)]
-pub mod as_bytes;
-#[doc(hidden)]
-pub mod byte_complete;
-#[doc(hidden)]
-pub mod fixed_layout;
-#[doc(hidden)]
-pub mod from_bytes;
-#[doc(hidden)]
-pub mod no_uninit;
+mod as_bytes;
+mod byte_complete;
+mod fixed_layout;
+mod from_bytes;
+mod no_uninit;
+mod zeroable;
 
 #[doc(inline)]
 pub use as_bytes::AsBytes;
@@ -23,5 +19,7 @@ pub use fixed_layout::FixedLayout;
 pub use from_bytes::FromBytes;
 #[doc(inline)]
 pub use no_uninit::NoUninit;
+#[doc(inline)]
+pub use zeroable::Zeroable;
 
 pub use mem_markers_macros::*;
