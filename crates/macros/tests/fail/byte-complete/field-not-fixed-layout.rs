@@ -1,6 +1,6 @@
-use mem_markers::ByteComplete;
+use mem_markers::{ByteComplete, Zeroable};
 
-#[derive(ByteComplete)]
+#[derive(Zeroable, ByteComplete)]
 struct Foo {
     a: Other,
 }

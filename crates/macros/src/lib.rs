@@ -9,6 +9,7 @@ mod fixed_layout;
 mod from_bytes;
 mod no_uninit;
 mod utils;
+mod zeroable;
 
 macro_rules! define_derive {
     ($item:meta => $fun:ident => $expand:path) => {
@@ -27,3 +28,4 @@ define_derive!(ByteComplete => byte_complete => byte_complete::expand);
 define_derive!(FromBytes => from_bytes => from_bytes::expand);
 define_derive!(NoUninit => no_uninit => no_uninit::expand);
 define_derive!(AsBytes => as_bytes => as_bytes::expand);
+define_derive!(Zeroable => zeroable => zeroable::expand);

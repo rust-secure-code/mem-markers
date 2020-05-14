@@ -1,9 +1,23 @@
+use crate::Zeroable;
+
 /// A marker trait representing types are valid no matter what byte values represent them in memory
 ///
 /// Types like `u8` are `ByteComplete` because no matter what value the byte that represents the `u8`
 /// is in memory, it's guranteed to be a valid `u8`. `bool` is not `ByteComplete` because only the bytes
 /// `0b1` and `0b0` are valid `bool`s.
-pub unsafe trait ByteComplete {}
+///
+/// `ByteComplete` is a more general version of `Zeroable` which has the same constraints but only for
+/// zero bytes.
+///
+/// `ByteComplete` vs `FromBytes`
+/// `ByteComplete` types are not guranteed to have fixed layouts so creating types from bytes
+/// may not be predictable though it will always yield a valid value. If you want predictability,
+/// use `FromBytes`.
+///
+/// So why  is `ByteComplete` useful? There may be situations where you simply want to allocate
+/// `ByteComplete` values and do not want to ensure that their memory is in some given state before use.
+/// `ByteComplete` means that types are always in some valid state no matter their memory.
+pub unsafe trait ByteComplete: Zeroable {}
 
 macro_rules! byte_complete_impl {
     ($($type:ty),*) => {

@@ -6,9 +6,6 @@
 /// representation for Rust types).
 pub unsafe trait FixedLayout {}
 
-#[doc(hidden)]
-pub fn ensure<T: FixedLayout>() {}
-
 macro_rules! fixed_layout_impl {
     ($($type:ty),*) => {
         $(unsafe impl FixedLayout for $type {})*

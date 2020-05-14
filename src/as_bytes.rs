@@ -4,9 +4,6 @@
 /// have any uninitialized bytes hence it requires those two traits
 pub unsafe trait AsBytes: crate::NoUninit + crate::FixedLayout {}
 
-#[doc(hidden)]
-pub fn ensure<T: AsBytes>() {}
-
 macro_rules! as_bytes_impl {
     ($($type:ty),*) => {
         $(unsafe impl AsBytes for $type {})*

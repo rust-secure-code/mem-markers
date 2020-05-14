@@ -1,3 +1,4 @@
 fn main() {
-    mem_markers::fixed_layout::ensure::<&str>();
+    fn ensure<T: mem_markers::FixedLayout>() {}
+    ensure::<&str>();
 }

@@ -9,9 +9,6 @@
 /// [`MaybeUninit`](https://doc.rust-lang.org/stable/core/mem/union.MaybeUninit.html)
 pub unsafe trait NoUninit {}
 
-#[doc(hidden)]
-pub fn ensure<T: NoUninit>() {}
-
 macro_rules! no_uninit_impl {
     ($($type:ty),*) => {
         $(unsafe impl NoUninit for $type {})*

@@ -16,9 +16,6 @@ use crate::{ByteComplete, FixedLayout};
 /// [`FixedLayout`]: trait.FixedLayout.html
 pub unsafe trait FromBytes: ByteComplete + FixedLayout {}
 
-#[doc(hidden)]
-pub fn ensure<T: FromBytes>() {}
-
 macro_rules! from_bytes_impl {
     ($($type:ty),*) => {
         $(unsafe impl FromBytes for $type {})*
