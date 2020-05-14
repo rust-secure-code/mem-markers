@@ -1,4 +1,4 @@
-use macros::NoUninit;
+use mem_markers::NoUninit;
 
 #[derive(NoUninit)]
 struct Foo {

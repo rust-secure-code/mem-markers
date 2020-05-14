@@ -3,3 +3,5 @@ error: FixedLayout on unions is not currently supported
   |
 3 | #[derive(FixedLayout)]
   |          ^^^^^^^^^^^
+  |
+  = note: this error originates in a derive macro (in Nightly builds, run with -Z macro-backtrace for more info)

@@ -1,4 +1,4 @@
-use macros::ByteComplete;
+use mem_markers::ByteComplete;
 
 #[derive(ByteComplete)]
 struct Foo {

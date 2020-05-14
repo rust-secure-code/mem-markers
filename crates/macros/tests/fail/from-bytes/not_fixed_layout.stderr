@@ -3,3 +3,5 @@ error[E0277]: the trait bound `Foo: mem_markers::fixed_layout::FixedLayout` is n
   |
 3 | #[derive(FromBytes, ByteComplete)]
   |          ^^^^^^^^^ the trait `mem_markers::fixed_layout::FixedLayout` is not implemented for `Foo`
+  |
+  = note: this error originates in a derive macro (in Nightly builds, run with -Z macro-backtrace for more info)

@@ -34,20 +34,12 @@ fn ensure_struct_has_no_uninit(
         const HAS_PADDING: bool = core::mem::size_of::<#type_name>() != #(core::mem::size_of::<#field_types>())+*;
         let _: [(); 1/(1 - HAS_PADDING as usize)];
     };
-    let ensure_fields_no_uninit = quote! {
-        #(
-            ::mem_markers::no_uninit::ensure::<#field_types>();
-        )*
-    };
-    let ensure_method_name = quote::format_ident!("__ensure_no_uninit_for_{}", type_name);
 
-    let stream = quote! {
-        #[allow(missing_docs)]
-        #[allow(non_snake_case)]
-        fn #ensure_method_name() {
-            #ensure_no_padding
-            #ensure_fields_no_uninit
-        }
-    };
+    let stream = crate::utils::ensure_field_types(
+        field_types,
+        type_name,
+        &quote::format_ident!("NoUninit"),
+        Some(ensure_no_padding),
+    );
     Ok(stream)
 }

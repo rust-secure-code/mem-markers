@@ -30,20 +30,12 @@ fn ensure_struct_is_byte_complete(
     if field_types.is_empty() {
         return Ok(quote! {});
     }
-    let ensure = quote! {
-        #(
-            ::mem_markers::byte_complete::ensure::<#field_types>();
-        )*
-    };
-    let ensure_method_name = quote::format_ident!("__ensure_byte_complete_for_{}", type_name);
-
-    let stream = quote! {
-        #[allow(missing_docs)]
-        #[allow(non_snake_case)]
-        fn #ensure_method_name() {
-            #ensure
-        }
-    };
+    let stream = crate::utils::ensure_field_types(
+        field_types,
+        type_name,
+        &quote::format_ident!("ByteComplete"),
+        None,
+    );
 
     Ok(stream.into())
 }

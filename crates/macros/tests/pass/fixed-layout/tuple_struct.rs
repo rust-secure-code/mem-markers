@@ -1,9 +1,10 @@
-use macros::FixedLayout;
+use mem_markers::FixedLayout;
 
 #[derive(FixedLayout)]
 #[repr(C)]
 struct Foo(u8);
 
 fn main() {
-    mem_markers::fixed_layout::ensure::<Foo>();
+    fn ensure<T: FixedLayout>() {}
+    ensure::<Foo>();
 }

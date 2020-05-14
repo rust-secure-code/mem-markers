@@ -1,5 +1,5 @@
 [package]
-name = "macros"
+name = "mem-markers-macros"
 version = "0.1.0"
 authors = ["Ryan Levick <ryan.levick@gmail.com>"]
 edition = "2018"

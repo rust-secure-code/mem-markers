@@ -1,4 +1,4 @@
-use macros::NoUninit;
+use mem_markers::NoUninit;
 
 #[derive(NoUninit)]
 #[repr(C)]
@@ -7,5 +7,6 @@ struct Foo {
 }
 
 fn main() {
-    mem_markers::no_uninit::ensure::<Foo>();
+    fn ensure<T: NoUninit>() {}
+    ensure::<Foo>();
 }

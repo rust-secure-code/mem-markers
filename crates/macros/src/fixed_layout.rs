@@ -39,21 +39,12 @@ fn ensure_struct_has_stable_layout(
             "FixedLayout trait requires #[repr(C)] or #[repr(transparent)] on structs with fields",
         ));
     }
-
-    let ensure = quote! {
-        #(
-            ::mem_markers::fixed_layout::ensure::<#field_types>();
-        )*
-    };
-    let ensure_method_name = quote::format_ident!("__ensure_fixed_layout_for_{}", type_name);
-
-    let stream = quote! {
-        #[allow(missing_docs)]
-        #[allow(non_snake_case)]
-        fn #ensure_method_name() {
-            #ensure
-        }
-    };
+    let stream = crate::utils::ensure_field_types(
+        field_types,
+        type_name,
+        &quote::format_ident!("FixedLayout"),
+        None,
+    );
     Ok(stream)
 }
 

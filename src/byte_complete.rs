@@ -5,9 +5,6 @@
 /// `0b1` and `0b0` are valid `bool`s.
 pub unsafe trait ByteComplete {}
 
-#[doc(hidden)]
-pub fn ensure<T: ByteComplete>() {}
-
 macro_rules! byte_complete_impl {
     ($($type:ty),*) => {
         $(unsafe impl ByteComplete for $type {})*

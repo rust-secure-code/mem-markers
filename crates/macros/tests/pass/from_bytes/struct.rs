@@ -1,4 +1,4 @@
-use macros::*;
+use mem_markers::*;
 
 #[derive(FromBytes, FixedLayout, ByteComplete)]
 #[repr(C)]
@@ -7,5 +7,6 @@ struct Foo {
 }
 
 fn main() {
-    mem_markers::from_bytes::ensure::<Foo>();
+    fn ensure<T: FromBytes>() {}
+    ensure::<Foo>();
 }

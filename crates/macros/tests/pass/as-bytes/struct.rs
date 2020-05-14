@@ -1,4 +1,4 @@
-use macros::*;
+use mem_markers::{AsBytes, FixedLayout, NoUninit};
 
 #[derive(AsBytes, FixedLayout, NoUninit)]
 #[repr(C)]
@@ -8,5 +8,6 @@ struct Foo {
 }
 
 fn main() {
-    mem_markers::as_bytes::ensure::<Foo>();
+    fn ensure<T: AsBytes>() {}
+    ensure::<Foo>();
 }

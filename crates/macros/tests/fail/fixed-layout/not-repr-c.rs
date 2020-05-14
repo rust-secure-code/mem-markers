@@ -1,4 +1,4 @@
-use macros::FixedLayout;
+use mem_markers::FixedLayout;
 
 #[derive(FixedLayout)]
 struct Foo {

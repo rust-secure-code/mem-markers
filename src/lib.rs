@@ -23,3 +23,5 @@ pub use fixed_layout::FixedLayout;
 pub use from_bytes::FromBytes;
 #[doc(inline)]
 pub use no_uninit::NoUninit;
+
+pub use mem_markers_macros::*;

@@ -1,4 +1,4 @@
-use macros::*;
+use mem_markers::*;
 
 #[derive(FromBytes, ByteComplete)]
 #[repr(C)]
