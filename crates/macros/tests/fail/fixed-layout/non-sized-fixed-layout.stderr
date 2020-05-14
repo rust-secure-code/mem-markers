@@ -1,14 +1,11 @@
 error[E0277]: the size for values of type `str` cannot be known at compilation time
-  --> $DIR/non-sized-fixed-layout.rs:2:5
-   |
-2  |     mem_markers::fixed_layout::ensure::<&str>();
-   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ doesn't have a size known at compile-time
-   | 
-  ::: $WORKSPACE/src/fixed_layout.rs:10:18
-   |
-10 | pub fn ensure<T: FixedLayout>() {}
-   |                  ----------- required by this bound in `mem_markers::fixed_layout::ensure`
-   |
-   = help: the trait `std::marker::Sized` is not implemented for `str`
-   = note: to learn more, visit <https://doc.rust-lang.org/book/ch19-04-advanced-types.html#dynamically-sized-types-and-the-sized-trait>
-   = note: required because of the requirements on the impl of `mem_markers::fixed_layout::FixedLayout` for `&str`
+ --> $DIR/non-sized-fixed-layout.rs:3:5
+  |
+2 |     fn ensure<T: mem_markers::FixedLayout>() {}
+  |        ------    ------------------------ required by this bound in `main::ensure`
+3 |     ensure::<&str>();
+  |     ^^^^^^^^^^^^^^ doesn't have a size known at compile-time
+  |
+  = help: the trait `std::marker::Sized` is not implemented for `str`
+  = note: to learn more, visit <https://doc.rust-lang.org/book/ch19-04-advanced-types.html#dynamically-sized-types-and-the-sized-trait>
+  = note: required because of the requirements on the impl of `mem_markers::fixed_layout::FixedLayout` for `&str`

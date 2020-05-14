@@ -1,8 +1,18 @@
+error[E0277]: the trait bound `Other: mem_markers::zeroable::Zeroable` is not satisfied
+ --> $DIR/field-not-fixed-layout.rs:5:8
+  |
+3 | #[derive(Zeroable, ByteComplete)]
+  |          -------- required by this bound in `FooImplsZeroable`
+4 | struct Foo {
+  |        ---
+5 |     a: Other,
+  |        ^^^^^ the trait `mem_markers::zeroable::Zeroable` is not implemented for `Other`
+
 error[E0277]: the trait bound `Other: mem_markers::byte_complete::ByteComplete` is not satisfied
  --> $DIR/field-not-fixed-layout.rs:5:8
   |
-3 | #[derive(ByteComplete)]
-  |          ------------ required by this bound in `FooImplsByteComplete`
+3 | #[derive(Zeroable, ByteComplete)]
+  |                    ------------ required by this bound in `FooImplsByteComplete`
 4 | struct Foo {
   |        ---
 5 |     a: Other,
