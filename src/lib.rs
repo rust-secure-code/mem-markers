@@ -1,5 +1,6 @@
 //! Marker traits for establishing certain invariants of how a type is represented in memory
 
+#![no_std]
 #![deny(missing_docs)]
 
 mod as_bytes;
