@@ -1,7 +1,15 @@
 /// A type which can be legally converted to raw bytes.
 ///
-/// It is necessary for this type have a fixed layout and not
-/// have any uninitialized bytes hence it requires those two traits
+/// Types that implement `AsBytes` require the following traits to also
+/// be implemented:
+/// * [`NoUninit`]: It is undefined behavior to view uninitialized memory so `AsByte` types
+/// must not contain any uninitialized memory.
+/// * [`FixedLayout`]: In order to be sure that a type does not have uninitialized memory,
+/// it must have a fixed layout otherwise it is possible that the compiler rearranges the type
+/// to have padding (and thus uninitialized memory).
+///
+/// [`FixedLayout`]: trait.FixedLayout.html
+/// [`NoUninit`]: trait.InvariantFree.html
 pub unsafe trait AsBytes: crate::NoUninit + crate::FixedLayout {}
 
 macro_rules! as_bytes_impl {

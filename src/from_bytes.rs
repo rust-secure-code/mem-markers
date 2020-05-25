@@ -1,11 +1,17 @@
-use crate::{ByteComplete, FixedLayout};
-
-/// A type which can be legally instantiated from raw bytes.
+/// A type which can be safely _and_ correctly instantiated from raw
+/// bytes _and_ then safely _and_ correctly used.
 ///
-/// It is necessary for this type have a fixed layout and be
+/// Types that implement `FromBytes` require the following traits to also
+/// be implemented:
+/// * [`FixedLayout`]: in order to get reliable results, the type
+/// must have a well known layout.
+/// * [`ByteComplete`]: in order to be able to turn _any_ properly sized
+/// aligned byte array into the type, the type must be byte complete.
 /// byte complete hence it requires the type implements
-/// [`ByteComplete`] and [`FixedLayout`]. See those types
-/// documentation for information on the invariants those
+/// * [`InvariantFree`]: The type must not rely on any invariants to be confirmed
+/// before the type can be used safely _and_ correctly.
+///
+/// See those types documentation for information on the invariants those
 /// traits represent.
 ///
 /// [`FromBytes`] is the logical opposite as [`AsBytes`].
@@ -14,7 +20,11 @@ use crate::{ByteComplete, FixedLayout};
 /// [`AsBytes`]: trait.AsBytes.html
 /// [`ByteComplete`]: trait.ByteComplete.html
 /// [`FixedLayout`]: trait.FixedLayout.html
-pub unsafe trait FromBytes: ByteComplete + FixedLayout {}
+/// [`InvariantFree`]: trait.InvariantFree.html
+pub unsafe trait FromBytes:
+    crate::InvariantFree + crate::ByteComplete + crate::FixedLayout
+{
+}
 
 macro_rules! from_bytes_impl {
     ($($type:ty),*) => {
@@ -23,6 +33,7 @@ macro_rules! from_bytes_impl {
 }
 
 from_bytes_impl!(
+    (),
     u8,
     u16,
     u32,

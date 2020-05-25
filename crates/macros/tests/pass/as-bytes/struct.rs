@@ -1,6 +1,6 @@
-use mem_markers::{AsBytes, FixedLayout, NoUninit};
+use mem_markers::{AsBytes, FixedLayout, InvariantFree, NoUninit};
 
-#[derive(AsBytes, FixedLayout, NoUninit)]
+#[derive(AsBytes, FixedLayout, InvariantFree, NoUninit)]
 #[repr(C)]
 struct Foo {
     a: u8,

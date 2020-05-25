@@ -7,6 +7,7 @@ mod as_bytes;
 mod byte_complete;
 mod fixed_layout;
 mod from_bytes;
+mod invariant_free;
 mod no_uninit;
 mod zeroable;
 
@@ -18,6 +19,8 @@ pub use byte_complete::ByteComplete;
 pub use fixed_layout::FixedLayout;
 #[doc(inline)]
 pub use from_bytes::FromBytes;
+#[doc(inline)]
+pub use invariant_free::InvariantFree;
 #[doc(inline)]
 pub use no_uninit::NoUninit;
 #[doc(inline)]
