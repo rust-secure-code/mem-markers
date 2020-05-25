@@ -25,3 +25,12 @@ fn safe_transmute<From: AsBytes, To: FromBytes>(from: From) -> To {
     unsafe { std::mem::transmute_copy(from) }
 }
 ```
+
+## Comparisons with Other Crates
+
+There are several other crates that implement the same functionality as mem-markers even in part or in full. Here is a quick comparison. If you do not find your favorite crate here, please file an issue!
+
+* [`typic`](https://github.com/jswrenn/typic) - `typic` aims to allow for "fearless transmute". `typic` is built on low-level primitives that can be used to build traits that represent the same invariants as `mem-markers` traits. Where the crate differs is that `typic` uses type-level programming for its implementation. This means that `typic` can generally express more subtle invariants than `mem-markers`, but its implementation is more complex. `typic` also does more than `mem-markers` by providing functionality around safe transmute. `mem-markers` is purposefully only marker traits and any actual implementation is left for other crates. 
+* [`zerocopy`](https://docs.rs/zerocopy/0.3.0/zerocopy/) - `zerocopy` has similar levels of functionality to `typic` but takes an approach more akin to `mem-markers`. The main difference is that `mem-markers` aims at only exposing marker traits (at a more fine grained level than `zerocopy`). It would be possible to implement `zerocopy` in terms on `mem-markers`, exposing additional functionality on top of `mem-markers` marker traits.
+* [bytemuck](https://crates.io/crates/bytemuck) - `bytemuck`, much like `zerocopy`, is a high level crate for exposing safe transmute functionality. Similarly, `bytemuck` could be implemented in terms of `mem-markers`.
+* [`safe-transmute`](https://crates.io/crates/safe-transmute) - `safe-transmute` compares to `mem-markers` in much the same way as `bytemuck` and `zerocopy`. 
