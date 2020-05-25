@@ -1,7 +1,7 @@
 error[E0277]: the trait bound `Foo: mem_markers::fixed_layout::FixedLayout` is not satisfied
  --> $DIR/not_fixed_layout.rs:3:10
   |
-3 | #[derive(FromBytes, ByteComplete, Zeroable)]
+3 | #[derive(FromBytes, ByteComplete, InvariantFree, Zeroable)]
   |          ^^^^^^^^^ the trait `mem_markers::fixed_layout::FixedLayout` is not implemented for `Foo`
   |
   = note: this error originates in a derive macro (in Nightly builds, run with -Z macro-backtrace for more info)

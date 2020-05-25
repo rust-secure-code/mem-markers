@@ -1,6 +1,6 @@
 use mem_markers::*;
 
-#[derive(FromBytes, FixedLayout, ByteComplete, Zeroable)]
+#[derive(FromBytes, FixedLayout, InvariantFree, ByteComplete, Zeroable)]
 #[repr(C)]
 struct Foo {
     a: u8,

@@ -9,7 +9,7 @@ use crate::Zeroable;
 /// `ByteComplete` is a more general version of `Zeroable` which has the same constraints but only for
 /// zero bytes.
 ///
-/// `ByteComplete` vs `FromBytes`
+/// # `ByteComplete` vs `FromBytes`
 /// `ByteComplete` types are not guranteed to have fixed layouts so creating types from bytes
 /// may not be predictable though it will always yield a valid value. If you want predictability,
 /// use `FromBytes`.
